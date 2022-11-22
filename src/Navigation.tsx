@@ -1,4 +1,5 @@
 import React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
 
@@ -7,6 +8,8 @@ import Loans from './screens/Loans';
 import { colors } from './themes/colors';
 import { Image } from 'react-native';
 import Payment from './screens/Payment';
+
+const Drawer = createDrawerNavigator();
 
 const Tab = createBottomTabNavigator();
 const MyTheme = {
@@ -18,29 +21,15 @@ const MyTheme = {
     text: colors.white,
   },
 };
+
 function MyTabs() {
   return (
-    <Tab.Navigator
-      initialRouteName="Home"
-      screenOptions={{
-        headerLeft: () => (
-          <Image
-            style={{ marginHorizontal: 20 }}
-            source={require('./assets/icons/bars.png')}
-          />
-        ),
-        headerStyle: {
-          elevation: 0,
-        },
-        tabBarStyle: {
-          height: 60,
-        },
-        tabBarItemStyle: { height: 40, alignSelf: 'center', opacity: 1 },
-      }}>
+    <Tab.Navigator initialRouteName="Home">
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
+          header: () => {},
           tabBarIcon: () => {
             return <Image source={require('./assets/icons/house.png')} />;
           },
@@ -67,10 +56,21 @@ function MyTabs() {
     </Tab.Navigator>
   );
 }
+function MyDrawer(navigation: any) {
+  console.log('ruta: ', navigation);
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        headerStyle: { elevation: 0 },
+      }}>
+      <Drawer.Screen name="Tabs" component={MyTabs} />
+    </Drawer.Navigator>
+  );
+}
 export default function Navigation() {
   return (
     <NavigationContainer theme={MyTheme}>
-      <MyTabs />
+      <MyDrawer />
     </NavigationContainer>
   );
 }

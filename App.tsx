@@ -8,6 +8,9 @@
  * @format
  */
 
+// Important!, this importation has to be always on top
+import 'react-native-gesture-handler';
+
 import React from 'react';
 import {
   SafeAreaView,

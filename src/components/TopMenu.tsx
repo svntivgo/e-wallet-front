@@ -9,10 +9,7 @@ interface Props {
 const TopMenu = ({ title }: Props) => {
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.icon}
-        source={require('../assets/img/top-menu/bars.png')}
-      />
+      <Image style={styles.icon} source={require('../assets/icons/bars.png')} />
       <Text style={styles.title}>{title}</Text>
     </View>
   );

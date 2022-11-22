@@ -9,22 +9,30 @@
  */
 
 import React from 'react';
-import { SafeAreaView, StatusBar, useColorScheme } from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet, useColorScheme } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './src/screens/Home';
+import BottomMenu from './src/components/BottomMenu';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   return (
     <NavigationContainer>
-      <SafeAreaView>
+      <SafeAreaView style={style.container}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
         <Home />
+        <BottomMenu />
       </SafeAreaView>
     </NavigationContainer>
   );
 };
+
+const style = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default App;

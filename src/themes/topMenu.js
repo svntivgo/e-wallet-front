@@ -3,20 +3,20 @@ import { colors } from './colors';
 
 export const topMenu = StyleSheet.create({
   container: {
-    height: 60,
-    flexDirection: 'row',
-    paddingHorizontal: 20,
     alignItems: 'center',
     backgroundColor: colors.blue,
-    top: 0,
+    flexDirection: 'row',
+    height: 60,
     left: 0,
+    paddingHorizontal: 20,
     right: 0,
+    top: 0,
   },
   icon: {
     marginRight: 40,
   },
   title: {
-    fontSize: 25,
     color: colors.white,
+    fontSize: 25,
   },
 });

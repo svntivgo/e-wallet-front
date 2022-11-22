@@ -3,18 +3,19 @@ import { colors } from './colors';
 
 export const accountBalanceHome = StyleSheet.create({
   container: {
-    paddingVertical: 50,
+    paddingTop: 15,
     paddingHorizontal: 25,
+    paddingBottom: 60,
     backgroundColor: colors.blue,
   },
   amount: {
-    marginVertical: 20,
+    color: colors.white,
     fontSize: 50,
     fontWeight: 'bold',
-    color: colors.white,
+    marginBottom: 10,
   },
   text: {
-    fontSize: 20,
     color: colors.white,
+    fontSize: 15,
   },
 });

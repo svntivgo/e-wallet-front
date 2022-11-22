@@ -1,6 +1,7 @@
 import React from 'react';
 import { Image, Text, View } from 'react-native';
 import { bottomMenu as styles } from '../themes/bottomMenu';
+
 const BottomMenu = () => {
   return (
     <View style={styles.container}>

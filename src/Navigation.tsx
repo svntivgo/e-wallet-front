@@ -20,7 +20,23 @@ const MyTheme = {
 };
 function MyTabs() {
   return (
-    <Tab.Navigator initialRouteName="Home">
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerLeft: () => (
+          <Image
+            style={{ marginHorizontal: 20 }}
+            source={require('./assets/icons/bars.png')}
+          />
+        ),
+        headerStyle: {
+          elevation: 0,
+        },
+        tabBarStyle: {
+          height: 60,
+        },
+        tabBarItemStyle: { height: 40, alignSelf: 'center', opacity: 1 },
+      }}>
       <Tab.Screen
         name="Home"
         component={Home}

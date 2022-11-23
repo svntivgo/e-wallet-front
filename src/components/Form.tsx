@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   input: {
-    flex: 4,
+    flex: 6,
   },
   textInput: {
     backgroundColor: '#eaeaea',

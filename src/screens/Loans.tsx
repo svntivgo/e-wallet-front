@@ -10,7 +10,7 @@ const Loans = () => {
   ];
 
   return (
-    <View style={styles.Container}>
+    <View style={styles.container}>
       <AccountBalance amount={50000000} text={'Available to loan'} />
       <Form inputs={inputs} button={'Apply for loan'} />
     </View>
@@ -18,7 +18,7 @@ const Loans = () => {
 };
 
 const styles = StyleSheet.create({
-  Container: {
+  container: {
     flex: 1,
   },
 });

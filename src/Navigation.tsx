@@ -8,6 +8,7 @@ import Loans from './screens/Loans';
 import { colors } from './themes/colors';
 import { Image } from 'react-native';
 import Payment from './screens/Payment';
+import UserMenu from './components/UserMenu';
 
 const Drawer = createDrawerNavigator();
 
@@ -61,8 +62,10 @@ function MyDrawer(navigation: any) {
   return (
     <Drawer.Navigator
       screenOptions={{
+        headerTintColor: colors.white,
         headerStyle: { elevation: 0 },
-      }}>
+      }}
+      drawerContent={() => <UserMenu />}>
       <Drawer.Screen name="Tabs" component={MyTabs} />
     </Drawer.Navigator>
   );

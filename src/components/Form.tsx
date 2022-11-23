@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   formItem: {
-    flexDirection: 'row',
     alignItems: 'center',
+    flexDirection: 'row',
     paddingVertical: 5,
   },
   logo: {
@@ -48,18 +48,18 @@ const styles = StyleSheet.create({
   },
   textInput: {
     backgroundColor: '#eaeaea',
-    borderBottomWidth: 1,
     borderBottomColor: '#777777',
-    padding: 10,
-    color: 'black',
+    borderBottomWidth: 1,
     borderRadius: 5,
+    color: 'black',
+    padding: 10,
   },
   errorContainer: {
     height: 20,
   },
   error: {
-    display: 'none',
     color: 'red',
+    display: 'none',
     marginLeft: 10,
   },
 });

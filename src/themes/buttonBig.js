@@ -3,13 +3,13 @@ import { colors } from './colors';
 
 export const buttonBig = StyleSheet.create({
   button: {
-    flexDirection: 'row',
-    justifyContent: 'center',
     backgroundColor: colors.blue,
-    padding: 15,
     borderRadius: 5,
+    height: 50,
+    padding: 15,
   },
   buttonText: {
+    alignSelf: 'center',
     color: colors.white,
     fontWeight: 'bold',
   },

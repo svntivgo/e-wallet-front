@@ -2,8 +2,9 @@ import React from 'react';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Octicons';
 import { userMenu as styles } from '../themes/userMenu';
+import { DrawerContentComponentProps } from '@react-navigation/drawer';
 
-const UserMenu = () => {
+const UserMenu = ({ navigation }: DrawerContentComponentProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.containerUser}>
@@ -18,7 +19,9 @@ const UserMenu = () => {
           <Icon style={styles.icon} name="lock" size={25} />
           <Text style={styles.text}>Change password</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.item}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Themes')}
+          style={styles.item}>
           <Icon style={styles.icon} name="paintbrush" size={25} />
           <Text style={styles.text}>Change theme</Text>
         </TouchableOpacity>

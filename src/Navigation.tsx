@@ -10,6 +10,7 @@ import { Image } from 'react-native';
 import Payment from './screens/Payment';
 import UserMenu from './screens/UserMenu';
 import Themes from './screens/Themes';
+import ChangePassword from './screens/ChangePassword';
 
 const Drawer = createDrawerNavigator();
 
@@ -45,6 +46,7 @@ function MyTabs() {
             return <Image source={require('./assets/icons/heart.png')} />;
           },
         }}
+        // children={Props => <Loans {...Props} />}
       />
       <Tab.Screen
         name="Payment"
@@ -58,8 +60,7 @@ function MyTabs() {
     </Tab.Navigator>
   );
 }
-function MyDrawer(navigation: any) {
-  console.log('ruta: ', navigation);
+function MyDrawer() {
   return (
     <Drawer.Navigator
       screenOptions={{
@@ -69,6 +70,7 @@ function MyDrawer(navigation: any) {
       drawerContent={Props => <UserMenu {...Props} />}>
       <Drawer.Screen name="Tabs" component={MyTabs} />
       <Drawer.Screen name="Themes" component={Themes} />
+      <Drawer.Screen name="ChangePassword" component={ChangePassword} />
     </Drawer.Navigator>
   );
 }

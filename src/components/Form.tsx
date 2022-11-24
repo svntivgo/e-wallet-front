@@ -6,9 +6,10 @@ import ButtonBig from './ButtonBig';
 interface Props {
   inputs: { logo: string; name: string; error: string }[];
   button: string;
+  action?: () => void;
 }
 
-const Form = ({ inputs, button }: Props) => {
+const Form = ({ inputs, button, action }: Props) => {
   return (
     <View style={styles.formContainer}>
       {inputs.map((input: any) => {
@@ -24,7 +25,7 @@ const Form = ({ inputs, button }: Props) => {
           </View>
         );
       })}
-      <ButtonBig text={button} />
+      <ButtonBig text={button} action={action} />
     </View>
   );
 };

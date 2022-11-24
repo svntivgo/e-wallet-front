@@ -15,7 +15,9 @@ const UserMenu = ({ navigation }: DrawerContentComponentProps) => {
         <Text style={styles.name}>Nombre de usuario</Text>
       </View>
       <View style={styles.containerMenu}>
-        <TouchableOpacity style={styles.item}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('ChangePassword')}
+          style={styles.item}>
           <Icon style={styles.icon} name="lock" size={25} />
           <Text style={styles.text}>Change password</Text>
         </TouchableOpacity>

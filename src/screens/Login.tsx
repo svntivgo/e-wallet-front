@@ -30,7 +30,11 @@ const Login = ({ navigation }: NativeStackScreenProps<any, any>) => {
       <Text style={styles.reference}>Login or sign up for free</Text>
       <Form button="CONTINUE" inputs={inputs} action={signIn} />
       <View style={styles.line}>
-        <Text style={styles.register}>register</Text>
+        <Text
+          style={styles.register}
+          onPress={() => navigation.navigate('Register')}>
+          register
+        </Text>
       </View>
       <TouchableOpacity style={styles.registerButton} onPress={signIn}>
         <Text style={styles.registerText}>Sign in with Google</Text>

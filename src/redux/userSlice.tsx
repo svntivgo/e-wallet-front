@@ -11,79 +11,79 @@ const userSlice = createSlice({
       {
         reason: 'Pal guaro',
         date: new Date().getTime(),
-        amount: 3500000,
+        amount: 45000,
         user: {
           name: 'Ignacio',
         },
       },
       {
-        reason: 'Pal guaro',
+        reason: 'Lo de Doña Martha',
         date: new Date().getTime(),
-        amount: 3500000,
+        amount: 25000,
         user: {
           name: 'Ignacio',
         },
       },
       {
-        reason: 'Pal guaro',
+        reason: 'Almuerzo Salento',
         date: new Date().getTime(),
-        amount: 3500000,
+        amount: 45000,
         user: {
           name: 'Ignacio',
         },
       },
       {
-        reason: 'Pal guaro',
+        reason: 'Arriendo Don Coso',
         date: new Date().getTime(),
-        amount: 3500000,
+        amount: 1200000,
         user: {
           name: 'Ignacio',
         },
       },
       {
-        reason: 'Pal guaro',
+        reason: 'Regalo para la pollita',
         date: new Date().getTime(),
-        amount: 3500000,
+        amount: 85000,
         user: {
           name: 'Ignacio',
         },
       },
       {
-        reason: 'Pal guaro',
+        reason: 'Uber',
         date: new Date().getTime(),
-        amount: 3500000,
+        amount: 15000,
         user: {
           name: 'Ignacio',
         },
       },
       {
-        reason: 'Pal guaro',
+        reason: 'Pago PSE',
         date: new Date().getTime(),
-        amount: 3500000,
+        amount: 350000,
         user: {
           name: 'Ignacio',
         },
       },
       {
-        reason: 'Pal guaro',
+        reason: 'Cinemark',
         date: new Date().getTime(),
-        amount: 3500000,
+        amount: 50000,
         user: {
           name: 'Ignacio',
         },
       },
       {
-        reason: 'Pal guaro',
+        reason: 'Almuerzo Señor Patata',
         date: new Date().getTime(),
-        amount: 3500000,
+        amount: 70000,
         user: {
           name: 'Ignacio',
         },
       },
       {
-        reason: 'Pal guaro',
+        reason: 'Pa las polas',
         date: new Date().getTime(),
-        amount: 3500000,
+        amount: 16000,
         user: {
           name: 'Ignacio',
         },

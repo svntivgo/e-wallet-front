@@ -10,7 +10,7 @@ export const userMovements = StyleSheet.create({
     marginVertical: 15,
   },
   foto: {
-    flex: 2,
+    flex: 1,
     textAlign: 'center',
     alignSelf: 'center',
   },
@@ -18,13 +18,13 @@ export const userMovements = StyleSheet.create({
     flex: 4,
   },
   reason: {
-    fontSize: 18,
+    fontSize: 16,
     color: 'black',
   },
   date: {},
   amount: {
-    flex: 3,
-    fontSize: 18,
+    flex: 2,
+    fontSize: 16,
     textAlign: 'right',
   },
 });

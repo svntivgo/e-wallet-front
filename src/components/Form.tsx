@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { form as styles } from '../themes/form';
 import ButtonBig from './ButtonBig';
 interface Props {
-  inputs: { logo: string; name: string; error: string }[];
+  inputs: { logo?: string; name: string; error: string }[];
   button: string;
   action?: () => void;
 }
@@ -15,7 +15,9 @@ const Form = ({ inputs, button, action }: Props) => {
       {inputs.map((input: any) => {
         return (
           <View key={input.name} style={styles.formItem}>
-            <Icon style={styles.logo} name={input.logo} size={25} />
+            {input.logo ? (
+              <Icon style={styles.logo} name={input.logo} size={25} />
+            ) : null}
             <View style={styles.input}>
               <TextInput style={styles.textInput} placeholder={input.name} />
               <View style={styles.errorContainer}>

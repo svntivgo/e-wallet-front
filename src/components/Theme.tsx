@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { theme as styles } from '../themes/theme';
 
 interface Props {
@@ -11,14 +12,16 @@ const Theme = ({ colors }: Props) => {
     <View style={styles.container}>
       {colors.map(color => {
         return (
-          <View key={color} style={{ ...styles.theme, borderColor: color }}>
+          <TouchableOpacity
+            key={color}
+            style={{ ...styles.theme, borderColor: color }}>
             <View
               style={{
                 ...styles.color,
                 backgroundColor: color,
               }}
             />
-          </View>
+          </TouchableOpacity>
         );
       })}
     </View>

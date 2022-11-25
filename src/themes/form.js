@@ -1,9 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 export const form = StyleSheet.create({
-  formContainer: {
-    paddingHorizontal: 10,
-  },
+  formContainer: {},
   formItem: {
     alignItems: 'center',
     flexDirection: 'row',
@@ -12,7 +10,6 @@ export const form = StyleSheet.create({
   logo: {
     flex: 1,
     paddingBottom: 20,
-    textAlign: 'center',
   },
   input: {
     flex: 6,

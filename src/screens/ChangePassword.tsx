@@ -19,6 +19,7 @@ const ChangePassword = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Form button="Change password" inputs={inputs} />
+      <View style={styles.separator} />
       <ButtonBig text={'Cancel'} action={() => navigation.navigate('Tabs')} />
     </View>
   );
@@ -27,6 +28,10 @@ const ChangePassword = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 50,
+    paddingHorizontal: 20,
+  },
+  separator: {
+    marginTop: 20,
   },
 });
 

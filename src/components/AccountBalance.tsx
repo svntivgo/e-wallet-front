@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 
 interface Props {
   style?: any;
-  amount: number;
+  amount: string;
   text: string;
 }
 

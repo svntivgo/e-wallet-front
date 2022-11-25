@@ -3,7 +3,7 @@ import { colors } from './colors';
 
 export const userMovements = StyleSheet.create({
   container: {
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
   },
   movement: {
     flexDirection: 'row',
@@ -18,7 +18,7 @@ export const userMovements = StyleSheet.create({
     textAlign: 'center',
   },
   containerText: {
-    flex: 5,
+    flex: 3,
   },
   reason: {
     color: 'black',

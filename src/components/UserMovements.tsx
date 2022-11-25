@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { currencyHook } from '../hooks/currencyHook';
 import { userMovements as styles } from '../themes/userMovements';
 
 interface Props {
@@ -31,7 +32,7 @@ const UserMovements = ({ movements }: Props) => {
             <Text style={styles.reason}>{movement.reason}</Text>
             <Text style={styles.date}>{movement.date}</Text>
           </View>
-          <Text style={styles.amount}>$ {movement.amount}</Text>
+          <Text style={styles.amount}>$ {currencyHook(movement.amount)}</Text>
         </View>
       ))}
     </ScrollView>

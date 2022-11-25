@@ -10,7 +10,7 @@ export const accountBalanceHome = StyleSheet.create({
   },
   amount: {
     color: colors.white,
-    fontSize: 50,
+    fontSize: 42,
     fontWeight: 'bold',
     marginBottom: 10,
   },

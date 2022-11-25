@@ -1,10 +1,12 @@
 import React from 'react';
-import { DrawerContentComponentProps } from '@react-navigation/drawer';
 import { StyleSheet, View } from 'react-native';
+import { useSelector } from 'react-redux';
 import AccountBalance from '../components/AccountBalance';
 import Form from '../components/Form';
 
-function Payment({ navigation }: DrawerContentComponentProps) {
+function Payment() {
+  const { balance } = useSelector((state: any) => state.user);
+
   const inputs: { logo: string; name: string; error: string }[] = [
     {
       logo: 'account-arrow-left-outline',
@@ -17,12 +19,8 @@ function Payment({ navigation }: DrawerContentComponentProps) {
 
   return (
     <View style={styles.container}>
-      <AccountBalance amount={140234543} text={'Account balance'} />
-      <Form
-        inputs={inputs}
-        button={'Send payment'}
-        action={() => navigation.navigate('Home')}
-      />
+      <AccountBalance amount={balance} text={'Account balance'} />
+      <Form inputs={inputs} button={'Send payment'} />
     </View>
   );
 }

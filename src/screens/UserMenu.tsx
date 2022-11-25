@@ -1,10 +1,22 @@
 import React from 'react';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Octicons';
 import { userMenu as styles } from '../themes/userMenu';
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
+import { useDispatch, useSelector } from 'react-redux';
+import { unsetAuth } from '../redux/authSlice';
 
 const UserMenu = ({ navigation }: DrawerContentComponentProps) => {
+  const dispatch = useDispatch();
+  const { name } = useSelector((state: any) => state.user);
+  const signOut = () => {
+    Alert.alert('Sign Out', '¿Are you sure?', [
+      { text: 'No', onPress: () => {} },
+      { text: 'Yes', onPress: () => dispatch(unsetAuth('payload')) },
+    ]);
+    navigation.navigate('Login');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.containerUser}>
@@ -12,7 +24,7 @@ const UserMenu = ({ navigation }: DrawerContentComponentProps) => {
           style={styles.photo}
           source={require('../assets/images/user-profile.jpg')}
         />
-        <Text style={styles.name}>Nombre de usuario</Text>
+        <Text style={styles.name}>{name}</Text>
       </View>
       <View style={styles.containerMenu}>
         <TouchableOpacity
@@ -27,7 +39,7 @@ const UserMenu = ({ navigation }: DrawerContentComponentProps) => {
           <Icon style={styles.icon} name="paintbrush" size={25} />
           <Text style={styles.text}>Change theme</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.item}>
+        <TouchableOpacity onPress={signOut} style={styles.item}>
           <Icon style={styles.icon} name="sign-out" size={25} />
           <Text style={styles.text}>Sign out</Text>
         </TouchableOpacity>

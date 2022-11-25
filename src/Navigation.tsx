@@ -11,6 +11,8 @@ import Payment from './screens/Payment';
 import UserMenu from './screens/UserMenu';
 import Themes from './screens/Themes';
 import ChangePassword from './screens/ChangePassword';
+import Login from './screens/Login';
+import { useSelector } from 'react-redux';
 
 const Drawer = createDrawerNavigator();
 
@@ -61,13 +63,20 @@ function MyTabs() {
   );
 }
 function MyDrawer() {
+  const { isAuth } = useSelector((state: any) => state.auth);
+
   return (
     <Drawer.Navigator
       screenOptions={{
         headerTintColor: colors.white,
         headerStyle: { elevation: 0 },
+        header: !isAuth ? () => {} : undefined,
+        swipeEnabled: isAuth,
+        unmountOnBlur: true,
       }}
+      detachInactiveScreens={true}
       drawerContent={Props => <UserMenu {...Props} />}>
+      <Drawer.Screen name="Login" component={Login} />
       <Drawer.Screen name="Tabs" component={MyTabs} />
       <Drawer.Screen name="Themes" component={Themes} />
       <Drawer.Screen name="ChangePassword" component={ChangePassword} />

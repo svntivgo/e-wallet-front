@@ -16,7 +16,9 @@ const Home = () => {
         amount={balance}
         text="Balance in your account"
       />
-      <UserMovements movements={lastMovements} />
+      <View style={styles.containerMovements}>
+        <UserMovements movements={lastMovements} />
+      </View>
     </View>
   );
 };

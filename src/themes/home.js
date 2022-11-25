@@ -14,5 +14,10 @@ export const home = StyleSheet.create({
     left: -400,
     position: 'absolute',
     width: 1000,
+    zIndex: 2,
+  },
+  containerMovements: {
+    flex: 5,
+    marginTop: -110,
   },
 });

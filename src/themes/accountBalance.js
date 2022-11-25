@@ -6,6 +6,7 @@ export const accountBalanceHome = StyleSheet.create({
     paddingBottom: 60,
     paddingHorizontal: 25,
     paddingTop: 15,
+    zIndex: 2,
   },
   amount: {
     color: colors.white,

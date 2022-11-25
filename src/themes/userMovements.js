@@ -2,24 +2,24 @@ import { StyleSheet } from 'react-native';
 import { colors } from './colors';
 
 export const userMovements = StyleSheet.create({
-  containerMovements: {
-    paddingVertical: 15,
+  container: {
+    paddingHorizontal: 20,
   },
   movement: {
     flexDirection: 'row',
     marginVertical: 15,
   },
   foto: {
+    alignSelf: 'center',
     flex: 1,
     textAlign: 'center',
-    alignSelf: 'center',
   },
   containerText: {
-    flex: 4,
+    flex: 5,
   },
   reason: {
-    fontSize: 16,
     color: 'black',
+    fontSize: 16,
   },
   date: {},
   amount: {

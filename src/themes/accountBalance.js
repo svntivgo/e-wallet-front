@@ -3,10 +3,9 @@ import { colors } from './colors';
 
 export const accountBalanceHome = StyleSheet.create({
   container: {
-    paddingTop: 15,
-    paddingHorizontal: 25,
     paddingBottom: 60,
-    backgroundColor: colors.blue,
+    paddingHorizontal: 25,
+    paddingTop: 15,
   },
   amount: {
     color: colors.white,

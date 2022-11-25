@@ -18,7 +18,7 @@ interface Props {
 
 const UserMovements = ({ movements }: Props) => {
   return (
-    <ScrollView style={styles.containerMovements}>
+    <ScrollView style={styles.container}>
       {movements.map((movement, i) => (
         <View key={`movement-${i}`} style={styles.movement}>
           <Text style={styles.foto}>Foto</Text>

@@ -13,6 +13,7 @@ import Themes from './screens/Themes';
 import ChangePassword from './screens/ChangePassword';
 import Login from './screens/Login';
 import { useSelector } from 'react-redux';
+import Register from './screens/Register';
 
 const Drawer = createDrawerNavigator();
 
@@ -80,6 +81,7 @@ function MyDrawer() {
       <Drawer.Screen name="Tabs" component={MyTabs} />
       <Drawer.Screen name="Themes" component={Themes} />
       <Drawer.Screen name="ChangePassword" component={ChangePassword} />
+      <Drawer.Screen name="Register" component={Register} />
     </Drawer.Navigator>
   );
 }

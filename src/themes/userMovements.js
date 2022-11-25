@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { BounceInLeft } from 'react-native-reanimated';
 import { colors } from './colors';
 
 export const userMovements = StyleSheet.create({

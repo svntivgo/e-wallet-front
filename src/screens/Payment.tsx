@@ -3,6 +3,8 @@ import { StyleSheet, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import AccountBalance from '../components/AccountBalance';
 import Form from '../components/Form';
+import { accountBalanceLoaPay } from '../themes/accountBalance';
+import { currencyHook } from '../hooks/currencyHook';
 
 function Payment() {
   const { balance } = useSelector((state: any) => state.user);
@@ -19,7 +21,11 @@ function Payment() {
 
   return (
     <View style={styles.container}>
-      <AccountBalance amount={balance} text={'Account balance'} />
+      <AccountBalance
+        style={accountBalanceLoaPay}
+        amount={currencyHook(balance)}
+        text={'Account balance'}
+      />
       <Form inputs={inputs} button={'Send payment'} />
     </View>
   );

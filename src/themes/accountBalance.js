@@ -19,3 +19,19 @@ export const accountBalanceHome = StyleSheet.create({
     fontSize: 15,
   },
 });
+
+export const accountBalanceLoaPay = StyleSheet.create({
+  container: {
+    padding: 20,
+    alignItems: 'center',
+  },
+  amount: {
+    color: 'black',
+    fontSize: 36,
+  },
+  text: {
+    color: 'black',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+});

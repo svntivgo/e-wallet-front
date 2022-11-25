@@ -3,6 +3,8 @@ import { StyleSheet, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import AccountBalance from '../components/AccountBalance';
 import Form from '../components/Form';
+import { accountBalanceLoaPay } from '../themes/accountBalance';
+import { currencyHook } from '../hooks/currencyHook';
 
 const Loans = () => {
   const { available } = useSelector((state: any) => state.user);
@@ -13,7 +15,11 @@ const Loans = () => {
   ];
   return (
     <View style={styles.container}>
-      <AccountBalance amount={available} text={'Available to loan'} />
+      <AccountBalance
+        style={accountBalanceLoaPay}
+        amount={currencyHook(available)}
+        text={'Available to loan'}
+      />
       <Form inputs={inputs} button={'Apply for loan'} />
     </View>
   );

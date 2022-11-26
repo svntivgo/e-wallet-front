@@ -7,7 +7,6 @@ import Icon from 'react-native-vector-icons/Octicons';
 import Home from './screens/Home';
 import Loans from './screens/Loans';
 import { colors } from './themes/colors';
-import { Image } from 'react-native';
 import Payment from './screens/Payment';
 import UserMenu from './screens/UserMenu';
 import Themes from './screens/Themes';

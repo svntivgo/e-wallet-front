@@ -4,12 +4,12 @@ import { StackActions } from '@react-navigation/native';
 
 import { AuthContext } from '../context/AuthContext';
 
-function LoadingScreen({ navigation }: any) {
+function Loading({ navigation }: any) {
   const { loading, loggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     if (loggedIn) {
-      navigation.dispatch(StackActions.replace('Account'));
+      navigation.navigate('Tabs');
     } else if (loggedIn === false) {
       navigation.dispatch(StackActions.replace('Login'));
     }
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoadingScreen;
+export default Loading;

@@ -24,7 +24,7 @@ const AuthContextProvider = (props: any) => {
     const idToken = id ? id : await SInfo.getItem('idToken', {});
     const { name, picture, exp } = jwtDecode<any>(idToken);
     const data = jwtDecode<any>(idToken);
-    console.log('data JWT', JSON.stringify(data, null, 2));
+    // console.log('data JWT', JSON.stringify(data, null, 2));
 
     if (exp < Date.now() / 1000) {
       throw new Error('ID token expired!');
@@ -61,7 +61,7 @@ const AuthContextProvider = (props: any) => {
           }
         }
       } catch (err) {
-        Alert.alert('Error logging in 1');
+        Alert.alert('Error logging in');
       }
     })();
   }, [loggedIn]);
@@ -71,13 +71,14 @@ const AuthContextProvider = (props: any) => {
       const credentials = await auth0.webAuth.authorize({
         scope: 'openid email profile',
       });
+      console.log(credentials);
       await SInfo.setItem('idToken', credentials.idToken, {});
       const user_data = await getUserData(credentials.idToken);
       setLoggedIn(true);
       setUserData(user_data);
     } catch (err) {
       console.log(err);
-      Alert.alert('Error logging in 2');
+      Alert.alert('Error logging in');
     }
   };
 
@@ -88,7 +89,7 @@ const AuthContextProvider = (props: any) => {
       setLoggedIn(false);
       setUserData(undefined);
     } catch (err) {
-      Alert.alert('Error logging in 3');
+      Alert.alert('Error logging in');
     }
   };
 

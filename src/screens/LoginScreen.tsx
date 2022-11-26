@@ -4,7 +4,7 @@ import { StackActions } from '@react-navigation/native';
 
 import { AuthContext } from '../context/AuthContext';
 
-const LoginScreen = ({ navigation }: any) => {
+const Login = ({ navigation }: any) => {
   const { loggedIn } = useContext(AuthContext);
 
   useEffect(() => {
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default Login;

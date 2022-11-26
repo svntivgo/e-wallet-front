@@ -4,7 +4,7 @@ import { StackActions } from '@react-navigation/native';
 
 import { AuthContext } from '../context/AuthContext';
 
-const AccountScreen = ({ navigation }: any) => {
+const Account = ({ navigation }: any) => {
   const { logout, loggedIn, userData } = useContext(AuthContext);
 
   useEffect(() => {
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AccountScreen;
+export default Account;

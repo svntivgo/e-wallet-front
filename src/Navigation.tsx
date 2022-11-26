@@ -13,9 +13,9 @@ import Themes from './screens/Themes';
 import ChangePassword from './screens/ChangePassword';
 import { useSelector } from 'react-redux';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AccountScreen from './screens/AccountScreen';
-import LoadingScreen from './screens/LoadingScreen';
-import LoginScreen from './screens/LoginScreen';
+import Account from './screens/Account';
+import Loading from './screens/Loading';
+import Login from './screens/LoginScreen';
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -72,9 +72,9 @@ function MyTabs() {
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Loading" component={LoadingScreen} />
-      <Stack.Screen name="Login" component={LoginScreen} />
-      <Stack.Screen name="Account" component={AccountScreen} />
+      <Stack.Screen name="Loading" component={Loading} />
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Account" component={Account} />
     </Stack.Navigator>
   );
 }

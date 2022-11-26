@@ -7,9 +7,9 @@ import { accountBalanceHome } from '../themes/accountBalance';
 import { home as styles } from '../themes/home';
 import { currencyHook } from '../hooks/currencyHook';
 import { AuthContext } from '../context/AuthContext';
-import { DrawerContentComponentProps } from '@react-navigation/drawer';
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
-const Home = ({ navigation }: DrawerContentComponentProps) => {
+const Home = ({ navigation }: BottomTabScreenProps<any>) => {
   const { balance, lastMovements } = useSelector((state: any) => state.user);
 
   const { logout, userData, loggedIn } = useContext(AuthContext);

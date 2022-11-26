@@ -2,6 +2,7 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Octicons';
 
 import Home from './screens/Home';
 import Loans from './screens/Loans';
@@ -36,8 +37,8 @@ function MyTabs() {
         component={Home}
         options={{
           header: () => {},
-          tabBarIcon: () => {
-            return <Image source={require('./assets/icons/house.png')} />;
+          tabBarIcon: ({ color, size }) => {
+            return <Icon name="home" size={size} color={color} />;
           },
         }}
       />
@@ -45,18 +46,20 @@ function MyTabs() {
         name="Loans"
         component={Loans}
         options={{
-          tabBarIcon: () => {
-            return <Image source={require('./assets/icons/heart.png')} />;
+          tabBarIconStyle: {
+            color: colors.white,
+          },
+          tabBarIcon: ({ color, size }) => {
+            return <Icon name="credit-card" size={size} color={color} />;
           },
         }}
-        // children={Props => <Loans {...Props} />}
       />
       <Tab.Screen
         name="Payment"
         component={Payment}
         options={{
-          tabBarIcon: () => {
-            return <Image source={require('./assets/icons/card.png')} />;
+          tabBarIcon: ({ color, size }) => {
+            return <Icon name="paper-airplane" size={size} color={color} />;
           },
         }}
       />

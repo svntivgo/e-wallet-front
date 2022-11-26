@@ -12,12 +12,14 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.circle} />
-      <AccountBalance
-        style={accountBalanceHome}
-        amount={currencyHook(balance)}
-        text="Balance in your account"
-      />
+      <View style={styles.containerBalance}>
+        <View style={styles.circle} />
+        <AccountBalance
+          style={accountBalanceHome}
+          amount={currencyHook(balance)}
+          text="Balance in your account"
+        />
+      </View>
       <View style={styles.containerMovements}>
         <UserMovements movements={lastMovements} />
       </View>

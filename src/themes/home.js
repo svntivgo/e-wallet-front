@@ -6,18 +6,21 @@ export const home = StyleSheet.create({
     flex: 1,
     backgroundColor: 'transparent',
   },
+  containerBalance: {
+    flex: 1,
+    zIndex: 2,
+  },
   circle: {
     backgroundColor: colors.blue,
     borderRadius: 10000000,
-    bottom: 450,
+    bottom: 0,
     height: 1000,
     left: -400,
     position: 'absolute',
     width: 1000,
-    zIndex: 2,
   },
   containerMovements: {
-    flex: 5,
+    flex: 3,
     marginTop: -110,
   },
 });

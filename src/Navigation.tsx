@@ -11,11 +11,14 @@ import Payment from './screens/Payment';
 import UserMenu from './screens/UserMenu';
 import Themes from './screens/Themes';
 import ChangePassword from './screens/ChangePassword';
-import Login from './screens/Login';
 import { useSelector } from 'react-redux';
-import Register from './screens/Register';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import AccountScreen from './screens/AccountScreen';
+import LoadingScreen from './screens/LoadingScreen';
+import LoginScreen from './screens/LoginScreen';
 
 const Drawer = createDrawerNavigator();
+const Stack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
 const MyTheme = {
@@ -65,6 +68,16 @@ function MyTabs() {
     </Tab.Navigator>
   );
 }
+
+function MyStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Loading" component={LoadingScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Account" component={AccountScreen} />
+    </Stack.Navigator>
+  );
+}
 function MyDrawer() {
   const { isAuth } = useSelector((state: any) => state.auth);
 
@@ -79,11 +92,10 @@ function MyDrawer() {
       }}
       detachInactiveScreens={true}
       drawerContent={Props => <UserMenu {...Props} />}>
-      <Drawer.Screen name="Login" component={Login} />
+      <Drawer.Screen name="Stack" component={MyStack} />
       <Drawer.Screen name="Tabs" component={MyTabs} />
       <Drawer.Screen name="Themes" component={Themes} />
       <Drawer.Screen name="ChangePassword" component={ChangePassword} />
-      <Drawer.Screen name="Register" component={Register} />
     </Drawer.Navigator>
   );
 }

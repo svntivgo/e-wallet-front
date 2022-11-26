@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Form from '../components/Form';
 
-function Register() {
+function RegisterOld() {
   const inputs: { logo?: string; name: string; error: string }[] = [
     { logo: 'account-box-outline', name: 'Photo', error: '' },
     {
@@ -30,4 +30,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Register;
+export default RegisterOld;

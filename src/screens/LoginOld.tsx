@@ -7,7 +7,7 @@ import { setAuth } from '../redux/authSlice';
 import Form from '../components/Form';
 import { login as styles } from '../themes/login';
 
-const Login = ({ navigation }: NativeStackScreenProps<any, any>) => {
+const LoginOld = ({ navigation }: NativeStackScreenProps<any, any>) => {
   const inputs: { logo?: string; name: string; error: string }[] = [
     { name: 'Email or Username', error: '' },
   ];
@@ -46,4 +46,4 @@ const Login = ({ navigation }: NativeStackScreenProps<any, any>) => {
   );
 };
 
-export default Login;
+export default LoginOld;

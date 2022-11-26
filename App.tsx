@@ -18,6 +18,7 @@ import {
   StyleSheet,
   useColorScheme,
 } from 'react-native';
+import { AuthContextProvider } from './src/context/AuthContext';
 
 import Navigation from './src/Navigation';
 import { Provider } from 'react-redux';
@@ -30,7 +31,9 @@ const App = () => {
     <Provider store={store}>
       <SafeAreaView style={styles.container}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <Navigation />
+        <AuthContextProvider>
+          <Navigation />
+        </AuthContextProvider>
       </SafeAreaView>
     </Provider>
   );

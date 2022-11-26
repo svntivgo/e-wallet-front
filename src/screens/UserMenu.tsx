@@ -1,30 +1,38 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Octicons';
 import { userMenu as styles } from '../themes/userMenu';
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
 import { useDispatch, useSelector } from 'react-redux';
 import { unsetAuth } from '../redux/authSlice';
+import { AuthContext } from '../context/AuthContext';
 
 const UserMenu = ({ navigation }: DrawerContentComponentProps) => {
   const dispatch = useDispatch();
   const { name } = useSelector((state: any) => state.user);
-  const signOut = () => {
-    Alert.alert('Sign Out', '¿Are you sure?', [
-      { text: 'No', onPress: () => {} },
-      { text: 'Yes', onPress: () => dispatch(unsetAuth('payload')) },
-    ]);
-    navigation.navigate('Login');
-  };
+  const { logout, userData, loggedIn } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (loggedIn === false) {
+      navigation.navigate('Stack');
+    }
+  }, [loggedIn, navigation]);
+  // const signOut = () => {
+  //   Alert.alert('Sign Out', '¿Are you sure?', [
+  //     { text: 'No', onPress: () => {} },
+  //     { text: 'Yes', onPress: () => dispatch(unsetAuth('payload')) },
+  //   ]);
+  //   navigation.navigate('Login');
+  // };
 
   return (
     <View style={styles.container}>
       <View style={styles.containerUser}>
         <Image
           style={styles.photo}
-          source={require('../assets/images/user-profile.jpg')}
+          source={{ uri: userData?.picture || undefined }}
         />
-        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.name}>{userData?.name || ''}</Text>
       </View>
       <View style={styles.containerMenu}>
         <TouchableOpacity
@@ -39,7 +47,7 @@ const UserMenu = ({ navigation }: DrawerContentComponentProps) => {
           <Icon style={styles.icon} name="paintbrush" size={25} />
           <Text style={styles.text}>Change theme</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={signOut} style={styles.item}>
+        <TouchableOpacity onPress={() => logout()} style={styles.item}>
           <Icon style={styles.icon} name="sign-out" size={25} />
           <Text style={styles.text}>Sign out</Text>
         </TouchableOpacity>

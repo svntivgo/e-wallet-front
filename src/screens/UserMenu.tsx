@@ -1,22 +1,21 @@
 import React, { useContext, useEffect } from 'react';
-import { Alert, Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Octicons';
 import { userMenu as styles } from '../themes/userMenu';
 import { DrawerContentComponentProps } from '@react-navigation/drawer';
-import { useDispatch, useSelector } from 'react-redux';
-import { unsetAuth } from '../redux/authSlice';
+import { useSelector } from 'react-redux';
 import { AuthContext } from '../context/AuthContext';
 
 const UserMenu = ({ navigation }: DrawerContentComponentProps) => {
-  const dispatch = useDispatch();
-  const { name } = useSelector((state: any) => state.user);
-  const { logout, userData, loggedIn } = useContext(AuthContext);
+  const { userData } = useSelector((state: any) => state.user);
+  const { isAuth } = useSelector((state: any) => state.auth);
+  const { logout } = useContext(AuthContext);
 
   useEffect(() => {
-    if (loggedIn === false) {
+    if (!isAuth) {
       navigation.navigate('Stack');
     }
-  }, [loggedIn, navigation]);
+  }, [isAuth, navigation]);
   // const signOut = () => {
   //   Alert.alert('Sign Out', '¿Are you sure?', [
   //     { text: 'No', onPress: () => {} },
@@ -32,7 +31,7 @@ const UserMenu = ({ navigation }: DrawerContentComponentProps) => {
           style={styles.photo}
           source={{ uri: userData?.picture || undefined }}
         />
-        <Text style={styles.name}>{userData?.name || ''}</Text>
+        <Text style={styles.name}>{userData?.given_name || ''}</Text>
       </View>
       <View style={styles.containerMenu}>
         <TouchableOpacity

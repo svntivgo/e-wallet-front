@@ -3,15 +3,16 @@ import { View, StyleSheet, Button } from 'react-native';
 import { StackActions } from '@react-navigation/native';
 
 import { AuthContext } from '../context/AuthContext';
+import { useSelector } from 'react-redux';
 
 const Login = ({ navigation }: any) => {
-  const { loggedIn } = useContext(AuthContext);
+  const { isAuth } = useSelector((state: any) => state.auth);
 
   useEffect(() => {
-    if (loggedIn) {
+    if (isAuth) {
       navigation.navigate('Tabs');
     }
-  }, [loggedIn, navigation]);
+  }, [isAuth, navigation]);
 
   const { login } = useContext(AuthContext);
 

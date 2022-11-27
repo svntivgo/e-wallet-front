@@ -8,7 +8,7 @@ export const theme = StyleSheet.create({
   },
   theme: {
     borderRadius: 15,
-    borderWidth: 2,
+    borderWidth: 1,
     height: 150,
     overflow: 'hidden',
     width: 100,

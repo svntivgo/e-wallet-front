@@ -3,15 +3,17 @@ import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import { StackActions } from '@react-navigation/native';
 
 import { AuthContext } from '../context/AuthContext';
+import { useSelector } from 'react-redux';
 
 const Account = ({ navigation }: any) => {
   const { logout, loggedIn, userData } = useContext(AuthContext);
+  const { isAuth } = useSelector((state: any) => state.auth);
 
   useEffect(() => {
-    if (loggedIn === false) {
+    if (!isAuth) {
       navigation.dispatch(StackActions.replace('Login'));
     }
-  }, [loggedIn, navigation]);
+  }, [isAuth, navigation]);
 
   return (
     <View style={[styles.container, { backgroundColor: '#f5f5f5' }]}>

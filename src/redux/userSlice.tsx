@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const userSlice = createSlice({
   name: 'user',
   initialState: {
+    userData: {},
     name: 'Jackson Francisco',
     color: 'azulito',
     balance: 14450000,
@@ -91,14 +92,14 @@ const userSlice = createSlice({
     ],
   },
   reducers: {
-    // setAuth(state, action: PayloadAction<string>) {
-    //   state.isAuth = true;
-    // },
-    // unsetAuth(state, action: PayloadAction<string>) {
-    //   state.isAuth = false;
-    // },
+    setUser(state, action: PayloadAction<object>) {
+      state.userData = action.payload;
+    },
+    unsetUser(state) {
+      state.userData = {};
+    },
   },
 });
 
-export const {} = userSlice.actions;
+export const { setUser, unsetUser } = userSlice.actions;
 export default userSlice.reducer;

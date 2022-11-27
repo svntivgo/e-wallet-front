@@ -4,6 +4,9 @@ import SInfo from 'react-native-sensitive-info';
 import Auth0 from 'react-native-auth0';
 import jwtDecode from 'jwt-decode';
 import { Alert } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAuth, unsetAuth } from '../redux/authSlice';
+import { setUser, unsetUser } from '../redux/userSlice';
 
 const auth0 = new Auth0({
   domain: 'dev-tb7vphht4ydgpnlh.us.auth0.com',
@@ -12,6 +15,9 @@ const auth0 = new Auth0({
 
 const AuthContextProvider = (props: any) => {
   const [loading] = useState(true);
+  const { token } = useSelector((state: any) => state.auth);
+  const { isAuth } = useSelector((state: any) => state.auth);
+
   const [loggedIn, setLoggedIn] = useState<boolean>();
   const [userData, setUserData] = useState<
     | {
@@ -20,32 +26,30 @@ const AuthContextProvider = (props: any) => {
       }
     | undefined
   >();
-  const getUserData = async (id?: string) => {
-    const idToken = id ? id : await SInfo.getItem('idToken', {});
-    const { name, picture, exp } = jwtDecode<any>(idToken);
-    const data = jwtDecode<any>(idToken);
-    // console.log('data JWT', JSON.stringify(data, null, 2));
+  const dispatch = useDispatch();
 
-    if (exp < Date.now() / 1000) {
+  const getUserData = async (id?: string) => {
+    const idToken = id ? id : token;
+    const data = jwtDecode<any>(idToken);
+
+    if (data.exp < Date.now() / 1000) {
       throw new Error('ID token expired!');
     }
 
-    return {
-      name,
-      picture,
-    };
+    return { data, id };
   };
 
   useEffect(() => {
     (async () => {
       try {
         const user_data = await getUserData();
-        if (user_data) {
-          setLoggedIn(true);
-          setUserData(user_data);
+        if (user_data.id && user_data.data) {
+          dispatch(setAuth(user_data.id));
+          dispatch(setUser(user_data.data));
         }
       } catch (err) {
-        setLoggedIn(false);
+        dispatch(unsetAuth());
+        dispatch(unsetUser());
       }
     })();
   }, []);
@@ -53,31 +57,28 @@ const AuthContextProvider = (props: any) => {
   useEffect(() => {
     (async () => {
       try {
-        if (loggedIn) {
+        if (isAuth) {
           const user_data = await getUserData();
-          if (user_data) {
-            setLoggedIn(true);
-            setUserData(user_data);
+          if (user_data.id && user_data.data) {
+            dispatch(setAuth(user_data.id));
+            dispatch(setUser(user_data.data));
           }
         }
       } catch (err) {
         Alert.alert('Error logging in');
       }
     })();
-  }, [loggedIn]);
+  }, [isAuth]);
 
   const login = async () => {
     try {
       const credentials = await auth0.webAuth.authorize({
         scope: 'openid email profile',
       });
-      console.log(credentials);
-      await SInfo.setItem('idToken', credentials.idToken, {});
       const user_data = await getUserData(credentials.idToken);
-      setLoggedIn(true);
-      setUserData(user_data);
+      user_data.id && dispatch(setAuth(user_data.id));
+      dispatch(setUser(user_data.data));
     } catch (err) {
-      console.log(err);
       Alert.alert('Error logging in');
     }
   };
@@ -85,9 +86,8 @@ const AuthContextProvider = (props: any) => {
   const logout = async () => {
     try {
       await auth0.webAuth.clearSession({});
-      await SInfo.deleteItem('idToken', {});
-      setLoggedIn(false);
-      setUserData(undefined);
+      dispatch(unsetAuth());
+      dispatch(unsetUser());
     } catch (err) {
       Alert.alert('Error logging in');
     }

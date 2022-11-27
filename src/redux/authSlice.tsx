@@ -3,14 +3,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    token: '50yUn70qu3n',
-    isAuth: true,
+    token: '',
+    isAuth: false,
   },
   reducers: {
     setAuth(state, action: PayloadAction<string>) {
+      state.token = action.payload;
       state.isAuth = true;
     },
-    unsetAuth(state, action: PayloadAction<string>) {
+    unsetAuth(state) {
+      state.token = '';
       state.isAuth = false;
     },
   },

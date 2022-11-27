@@ -15,7 +15,7 @@ import { useSelector } from 'react-redux';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Account from './screens/Account';
 import Loading from './screens/Loading';
-import Login from './screens/LoginScreen';
+import Login from './screens/Login';
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();

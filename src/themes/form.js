@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from './colors';
 
 export const form = StyleSheet.create({
   formContainer: {},
@@ -15,19 +16,19 @@ export const form = StyleSheet.create({
     flex: 6,
   },
   textInput: {
-    backgroundColor: '#eaeaea',
-    borderBottomColor: '#777777',
+    backgroundColor: colors.white,
+    borderBottomColor: colors.gray,
     borderBottomWidth: 1,
     borderRadius: 5,
-    color: 'black',
+    color: colors.black,
     padding: 10,
   },
   errorContainer: {
     height: 20,
   },
   error: {
-    color: 'red',
-    display: 'none',
+    color: colors.salmon,
+    // display: 'none',
     marginLeft: 10,
   },
 });

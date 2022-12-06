@@ -21,24 +21,16 @@ const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
-const MyTheme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: colors.white,
-    card: colors.blue,
-    text: colors.white,
-  },
-};
 
-function MyTabs() {
+const MyTabs = () => {
   return (
-    <Tab.Navigator initialRouteName="Home">
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={{ tabBarStyle: { padding: 10 }, header: () => {} }}>
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          header: () => {},
           tabBarIcon: ({ color, size }) => {
             return <Icon name="home" size={size} color={color} />;
           },
@@ -67,7 +59,7 @@ function MyTabs() {
       />
     </Tab.Navigator>
   );
-}
+};
 
 function MyStack() {
   return (
@@ -100,6 +92,16 @@ function MyDrawer() {
   );
 }
 export default function Navigation() {
+  const { setting } = useSelector((state: any) => state.user);
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: colors.white,
+      card: setting.color,
+      text: colors.white,
+    },
+  };
   return (
     <NavigationContainer theme={MyTheme}>
       <MyDrawer />

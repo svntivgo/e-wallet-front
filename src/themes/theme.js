@@ -5,11 +5,12 @@ export const theme = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-evenly',
+    paddingHorizontal: 20,
   },
   theme: {
     borderRadius: 15,
     borderWidth: 1,
-    height: 150,
+    height: 100,
     overflow: 'hidden',
     width: 100,
     marginVertical: 10,

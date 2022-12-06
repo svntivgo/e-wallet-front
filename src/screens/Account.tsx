@@ -3,7 +3,8 @@ import { View, Text, StyleSheet, Button, Image } from 'react-native';
 import { StackActions } from '@react-navigation/native';
 
 import { AuthContext } from '../context/AuthContext';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAvailable } from '../redux/userSlice';
 
 const Account = ({ navigation }: any) => {
   const { logout, loggedIn, userData } = useContext(AuthContext);

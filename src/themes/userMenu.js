@@ -17,7 +17,7 @@ export const userMenu = StyleSheet.create({
     width: 125,
   },
   name: {
-    color: 'black',
+    color: colors.black,
     fontSize: 20,
     fontWeight: 'bold',
     marginTop: 5,

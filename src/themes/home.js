@@ -11,7 +11,7 @@ export const home = StyleSheet.create({
     zIndex: 2,
   },
   circle: {
-    backgroundColor: colors.blue,
+    backgroundColor: colors.default,
     borderRadius: 10000000,
     bottom: 0,
     height: 1000,

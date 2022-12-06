@@ -21,7 +21,7 @@ export const userMovements = StyleSheet.create({
     flex: 3,
   },
   reason: {
-    color: 'black',
+    color: colors.black,
     fontSize: 16,
   },
   date: {},

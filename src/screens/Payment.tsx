@@ -13,7 +13,7 @@ function Payment() {
     {
       logo: 'account-arrow-left-outline',
       name: 'User`s email or phone number',
-      error: '',
+      error: 'Esto s un error',
     },
     { logo: 'cash-multiple', name: 'Amount', error: '' },
     { logo: 'message-text-outline', name: 'Reason', error: '' },

@@ -11,7 +11,7 @@ export const login = StyleSheet.create({
     width: 50,
   },
   text: {
-    color: 'black',
+    color: colors.black,
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 60,
@@ -26,19 +26,19 @@ export const login = StyleSheet.create({
   },
   line: {
     alignItems: 'center',
-    borderBottomColor: 'grey',
+    borderBottomColor: colors.gray,
     borderBottomWidth: 1,
     marginBottom: 30,
     marginTop: 25,
   },
   register: {
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     marginBottom: -10,
     textAlign: 'center',
     width: 60,
   },
   registerButton: {
-    borderColor: 'grey',
+    borderColor: colors.gray,
     borderRadius: 4,
     borderWidth: 1,
     marginBottom: 25,

@@ -4,7 +4,7 @@ import { colors } from './colors';
 export const topMenu = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: colors.blue,
+    backgroundColor: colors.default,
     flexDirection: 'row',
     height: 60,
     left: 0,

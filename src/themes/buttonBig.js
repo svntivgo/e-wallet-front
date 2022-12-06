@@ -3,7 +3,7 @@ import { colors } from './colors';
 
 export const buttonBig = StyleSheet.create({
   button: {
-    backgroundColor: colors.blue,
+    backgroundColor: colors.default,
     borderRadius: 5,
     height: 50,
     padding: 15,

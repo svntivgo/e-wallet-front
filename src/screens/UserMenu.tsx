@@ -31,7 +31,9 @@ const UserMenu = ({ navigation }: DrawerContentComponentProps) => {
           style={styles.photo}
           source={{ uri: userData?.picture || undefined }}
         />
-        <Text style={styles.name}>{userData?.given_name || ''}</Text>
+        <Text style={styles.name}>
+          {userData?.given_name || userData?.name}
+        </Text>
       </View>
       <View style={styles.containerMenu}>
         <TouchableOpacity

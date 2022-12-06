@@ -1,4 +1,15 @@
 export const colors = {
-  blue: '#1554F7',
-  white: 'white',
+  // blue: '#1554F7',
+  default: '#2f74c8',
+  blue: '#2f74c8',
+  orange: '#ff6a2a',
+  yellow: '#fdd94d',
+  sea: '#008c95',
+  salmon: '#fb6b60',
+  pink: '#ffa0ad',
+  green: '#bdc65b',
+  wine: '#48137f',
+  gray: '#2a3240',
+  black: '#2a293e',
+  white: '#f0f3f2',
 };

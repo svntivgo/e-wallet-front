@@ -1,3 +1,5 @@
+import { colors } from './colors';
+
 const { StyleSheet } = require('react-native');
 
 export const themes = StyleSheet.create({
@@ -5,7 +7,7 @@ export const themes = StyleSheet.create({
     paddingTop: 20,
   },
   title: {
-    color: 'black',
+    color: colors.black,
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',

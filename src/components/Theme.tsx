@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSetting } from '../redux/userSlice';
 import { theme as styles } from '../themes/theme';
 
 interface Props {
@@ -9,9 +11,12 @@ interface Props {
 
 const Theme = ({ colors }: Props) => {
   const [focus, setFocus] = useState('');
+  const { setting } = useSelector((state: any) => state.user);
+  const dispatch = useDispatch();
+
   const handleColor = (color: string) => {
     setFocus(color);
-    console.log('seleccionado', focus);
+    dispatch(setSetting({ ...setting, color: color }));
   };
 
   useEffect(() => {}, [focus]);

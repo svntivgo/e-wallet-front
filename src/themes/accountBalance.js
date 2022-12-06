@@ -26,11 +26,11 @@ export const accountBalanceLoaPay = StyleSheet.create({
     alignItems: 'center',
   },
   amount: {
-    color: 'black',
+    color: colors.black,
     fontSize: 36,
   },
   text: {
-    color: 'black',
+    color: colors.black,
     fontSize: 18,
     fontWeight: 'bold',
   },

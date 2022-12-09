@@ -44,7 +44,7 @@ const Form = ({ inputs, button, action }: Props) => {
   );
 
   const sendData = async () => {
-    const apiMovement = '/movement';
+    const apiMovement = '/movement/loan';
     const requestOptions = {
       method: 'PATCH',
       headers: {
@@ -55,8 +55,7 @@ const Form = ({ inputs, button, action }: Props) => {
 
     await fetch(api.base + apiMovement, requestOptions)
       .then(response => response.json())
-      .then(response => {
-        console.log(response);
+      .then(_response => {
         action.navigate('Stack');
       })
       .catch(error => console.log(error));

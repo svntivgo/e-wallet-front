@@ -7,16 +7,17 @@ import { accountBalanceLoaPay } from '../themes/accountBalance';
 import { currencyHook } from '../hooks/currencyHook';
 import { setAvailable } from '../redux/userSlice';
 import { api } from '../common/api';
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
-const Loans = () => {
-  const { available } = useSelector((state: any) => state.user);
+const Loans = ({ navigation }: BottomTabScreenProps<any>) => {
+  const { available, id } = useSelector((state: any) => state.user);
 
-  const inputs: { logo: string; name: string; error: string }[] = [
-    { logo: 'cash-multiple', name: 'Amount', error: 'Mensaje de error' },
-    { logo: 'message-text-outline', name: 'Reason', error: '' },
-  ];
+  const inputs: { logo: string; name: string; type: string; error: string }[] =
+    [
+      { logo: 'cash-multiple', name: 'Amount', type: 'number', error: '' },
+      { logo: 'message-text-outline', name: 'Reason', type: 'text', error: '' },
+    ];
 
-  const { id } = useSelector((state: any) => state.user);
   const dispatch = useDispatch();
 
   const requestOptions = {
@@ -41,7 +42,7 @@ const Loans = () => {
         amount={currencyHook(available)}
         text={'Available to loan'}
       />
-      <Form inputs={inputs} button={'Apply for loan'} />
+      <Form inputs={inputs} button={'Apply for loan'} action={navigation} />
     </View>
   );
 };

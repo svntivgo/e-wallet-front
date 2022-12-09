@@ -7,7 +7,7 @@ import { accountBalanceHome } from '../themes/accountBalance';
 import { home as styles } from '../themes/home';
 import { currencyHook } from '../hooks/currencyHook';
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { setBalance, setSetting, setId } from '../redux/userSlice';
+import { setSetting, setId, setAccount } from '../redux/userSlice';
 import { api } from '../common/api';
 
 const Home = ({ navigation }: BottomTabScreenProps<any>) => {
@@ -37,7 +37,7 @@ const Home = ({ navigation }: BottomTabScreenProps<any>) => {
     await fetch(api.base + apiAccount, requestOptions)
       .then(response => response.json())
       .then(response => {
-        dispatch(setBalance(response.balance));
+        dispatch(setAccount(response));
       })
       .catch(error => console.log(error));
     await fetch(api.base + apiSetting, requestOptions)

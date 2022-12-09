@@ -5,11 +5,12 @@ const userSlice = createSlice({
   initialState: {
     userData: {},
     id: '',
-    name: 'Jackson Francisco',
+    name: 'Bienvenido',
     setting: {
       color: 'blue',
     },
     balance: 14450000,
+    account: '',
     available: 0,
     lastMovements: [
       {
@@ -104,8 +105,9 @@ const userSlice = createSlice({
     setId(state, action: PayloadAction<string>) {
       state.id = action.payload;
     },
-    setBalance(state, action: PayloadAction<number>) {
-      state.balance = Number(action.payload);
+    setAccount(state, action: PayloadAction<any>) {
+      state.account = action.payload.id;
+      state.balance = Number(action.payload.balance);
     },
     setAvailable(state, action: PayloadAction<number>) {
       state.available = Number(action.payload);
@@ -124,7 +126,7 @@ export const {
   unsetUser,
   setId,
   setAvailable,
-  setBalance,
+  setAccount,
   setSetting,
 } = userSlice.actions;
 export default userSlice.reducer;

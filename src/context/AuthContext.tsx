@@ -31,7 +31,6 @@ const AuthContextProvider = (props: any) => {
   const getUserData = async (id?: string) => {
     const idToken = id ? id : token;
     const data = jwtDecode<any>(idToken);
-
     if (data.exp < Date.now() / 1000) {
       throw new Error('ID token expired!');
     }

@@ -24,6 +24,7 @@ const Themes = ({ navigation }: CompositeScreenProps<any, any>) => {
 
   const { setting } = useSelector((state: any) => state.user);
   const dispatch = useDispatch();
+  const { token } = useSelector((state: any) => state.auth);
 
   const saveSetting = async () => {
     const apiSetting = `/setting`;
@@ -31,6 +32,7 @@ const Themes = ({ navigation }: CompositeScreenProps<any, any>) => {
       method: 'PATCH',
       headers: {
         'Content-type': 'application/json',
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(setting),
     };

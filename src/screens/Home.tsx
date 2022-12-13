@@ -14,7 +14,7 @@ const Home = ({ navigation }: BottomTabScreenProps<any>) => {
   const { balance, lastMovements, userData, id, setting } = useSelector(
     (state: any) => state.user,
   );
-  const { isAuth } = useSelector((state: any) => state.auth);
+  const { isAuth, token } = useSelector((state: any) => state.auth);
   const dispatch = useDispatch();
 
   const initialData = React.useCallback(async () => {
@@ -25,6 +25,7 @@ const Home = ({ navigation }: BottomTabScreenProps<any>) => {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
+        authorization: `Bearer ${token}`,
       },
     };
 

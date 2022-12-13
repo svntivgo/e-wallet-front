@@ -11,6 +11,7 @@ import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
 const Loans = ({ navigation }: BottomTabScreenProps<any>) => {
   const { available, id } = useSelector((state: any) => state.user);
+  const { token } = useSelector((state: any) => state.auth);
   const apiMovement = '/movement/loan';
   const inputs: {
     logo: string;
@@ -41,6 +42,7 @@ const Loans = ({ navigation }: BottomTabScreenProps<any>) => {
     method: 'GET',
     headers: {
       'Content-type': 'application/json',
+      authorization: `Bearer ${token}`,
     },
   };
   const apiAccount = `/account/${id}`;

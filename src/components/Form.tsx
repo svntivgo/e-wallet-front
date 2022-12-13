@@ -20,6 +20,7 @@ interface Props {
 
 const Form = ({ inputs, movementApi, button, action }: Props) => {
   const { account } = useSelector((state: any) => state.user);
+  const { token } = useSelector((state: any) => state.auth);
   const [request, setRequest] = useState({
     idIncome: account,
     idOutcome: account,
@@ -60,6 +61,7 @@ const Form = ({ inputs, movementApi, button, action }: Props) => {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
+        authorization: `Bearer ${token}`,
       },
     };
 

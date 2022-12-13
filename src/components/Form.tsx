@@ -6,12 +6,19 @@ import { api } from '../common/api';
 import { form as styles } from '../themes/form';
 import ButtonBig from './ButtonBig';
 interface Props {
-  inputs: { logo?: string; name: string; error: string; type: string }[];
+  inputs: {
+    logo?: string;
+    name: string;
+    placeholder: string;
+    error: string;
+    type?: string;
+  }[];
+  movementApi: string;
   button: string;
   action?: any;
 }
 
-const Form = ({ inputs, button, action }: Props) => {
+const Form = ({ inputs, movementApi, button, action }: Props) => {
   const { account } = useSelector((state: any) => state.user);
   const [request, setRequest] = useState({
     idIncome: account,
@@ -21,14 +28,18 @@ const Form = ({ inputs, button, action }: Props) => {
 
   const textHandler = useCallback(
     (e: any, type: string, input) => {
+      if (type === 'phoneEmail') {
+        input.error = null;
+        setTyping(e);
+      }
       if (type === 'number' && isNaN(e)) {
         input.error = 'Invalid number';
         setTyping(e);
       }
       if (type === 'number' && !isNaN(e)) {
         input.error = null;
-        setRequest(e);
-        setRequest({ ...request, [input.name.toLocaleLowerCase()]: e });
+        setTyping(e);
+        setRequest({ ...request, [input.name]: e });
       }
       if (type === 'text' && !isNaN(e)) {
         input.error = 'Invalid text';
@@ -36,15 +47,38 @@ const Form = ({ inputs, button, action }: Props) => {
       }
       if ((type === 'text' && isNaN(e)) || e === '') {
         input.error = null;
-        setRequest(e);
-        setRequest({ ...request, [input.name.toLocaleLowerCase()]: e });
+        setTyping(e);
+        setRequest({ ...request, [input.name]: e });
       }
     },
     [request],
   );
 
+  const getAccountByClient = async (phoneEmail: string, input: any) => {
+    const apiClient = `/movement/phone-email/${phoneEmail}`;
+    const requestOptions = {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    };
+
+    await fetch(api.base + apiClient, requestOptions)
+      .then(response => response.json())
+      .then(response => {
+        input.error = 'User not found';
+        if (response.id) {
+          input.error = '';
+          setRequest({ ...request, idIncome: response.id });
+        }
+        setTyping(phoneEmail);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   const sendData = async () => {
-    const apiMovement = '/movement/loan';
     const requestOptions = {
       method: 'PATCH',
       headers: {
@@ -53,7 +87,7 @@ const Form = ({ inputs, button, action }: Props) => {
       body: JSON.stringify(request),
     };
 
-    await fetch(api.base + apiMovement, requestOptions)
+    await fetch(api.base + movementApi, requestOptions)
       .then(response => response.json())
       .then(_response => {
         action.navigate('Stack');
@@ -61,7 +95,9 @@ const Form = ({ inputs, button, action }: Props) => {
       .catch(error => console.log(error));
   };
 
-  useEffect(() => {}, [request, typing]);
+  useEffect(() => {
+    console.log(request);
+  }, [request, typing]);
 
   return (
     <View style={styles.formContainer}>
@@ -74,8 +110,12 @@ const Form = ({ inputs, button, action }: Props) => {
             <View style={styles.input}>
               <TextInput
                 onChangeText={(e: any) => textHandler(e, input.type, input)}
+                onEndEditing={(e: any) => {
+                  input.name === 'clientIncome' &&
+                    getAccountByClient(e.nativeEvent.text, input);
+                }}
                 style={styles.textInput}
-                placeholder={input.name}
+                placeholder={input.placeholder}
               />
               <View style={styles.errorContainer}>
                 <Text style={styles.error}>{input.error}</Text>

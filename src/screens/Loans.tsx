@@ -11,12 +11,29 @@ import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
 const Loans = ({ navigation }: BottomTabScreenProps<any>) => {
   const { available, id } = useSelector((state: any) => state.user);
-
-  const inputs: { logo: string; name: string; type: string; error: string }[] =
-    [
-      { logo: 'cash-multiple', name: 'Amount', type: 'number', error: '' },
-      { logo: 'message-text-outline', name: 'Reason', type: 'text', error: '' },
-    ];
+  const apiMovement = '/movement/loan';
+  const inputs: {
+    logo: string;
+    name: string;
+    placeholder: string;
+    type?: string;
+    error: string;
+  }[] = [
+    {
+      logo: 'cash-multiple',
+      name: 'amount',
+      placeholder: 'Amount',
+      type: 'number',
+      error: '',
+    },
+    {
+      logo: 'message-text-outline',
+      name: 'reason',
+      placeholder: 'Reason',
+      type: 'text',
+      error: '',
+    },
+  ];
 
   const dispatch = useDispatch();
 
@@ -42,7 +59,12 @@ const Loans = ({ navigation }: BottomTabScreenProps<any>) => {
         amount={currencyHook(available)}
         text={'Available to loan'}
       />
-      <Form inputs={inputs} button={'Apply for loan'} action={navigation} />
+      <Form
+        inputs={inputs}
+        movementApi={apiMovement}
+        button={'Apply for loan'}
+        action={navigation}
+      />
     </View>
   );
 };

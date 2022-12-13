@@ -5,18 +5,39 @@ import AccountBalance from '../components/AccountBalance';
 import Form from '../components/Form';
 import { accountBalanceLoaPay } from '../themes/accountBalance';
 import { currencyHook } from '../hooks/currencyHook';
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
-function Payment() {
+function Payment({ navigation }: BottomTabScreenProps<any>) {
   const { balance } = useSelector((state: any) => state.user);
-
-  const inputs: { logo: string; name: string; error: string }[] = [
+  const apiMovement = '/movement/payment';
+  const inputs: {
+    logo: string;
+    name: string;
+    placeholder: string;
+    type: string;
+    error: string;
+  }[] = [
     {
       logo: 'account-arrow-left-outline',
-      name: 'User`s email or phone number',
-      error: 'Esto s un error',
+      name: 'idIncome',
+      placeholder: 'User`s email or phone number',
+      type: 'phoneEmail',
+      error: '',
     },
-    { logo: 'cash-multiple', name: 'Amount', error: '' },
-    { logo: 'message-text-outline', name: 'Reason', error: '' },
+    {
+      logo: 'cash-multiple',
+      name: 'amount',
+      placeholder: 'Amount',
+      type: 'number',
+      error: '',
+    },
+    {
+      logo: 'message-text-outline',
+      name: 'reason',
+      placeholder: 'Reason',
+      type: 'text',
+      error: '',
+    },
   ];
 
   return (
@@ -26,7 +47,12 @@ function Payment() {
         amount={currencyHook(balance)}
         text={'Account balance'}
       />
-      <Form inputs={inputs} button={'Send payment'} />
+      <Form
+        inputs={inputs}
+        movementApi={apiMovement}
+        button={'Send payment'}
+        action={navigation}
+      />
     </View>
   );
 }

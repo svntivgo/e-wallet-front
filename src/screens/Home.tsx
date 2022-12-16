@@ -33,6 +33,11 @@ const Home = ({ navigation }: BottomTabScreenProps<any>) => {
       .then(response => response.json())
       .then(response => {
         dispatch(setId(response.id));
+        console.log(response.password);
+        console.log(response.phone);
+        if (response.phone === '' || response.password === '') {
+          navigation.navigate('CompleteInformation');
+        }
       })
       .catch(error => console.log(error));
     await fetch(api.base + apiAccount, requestOptions)

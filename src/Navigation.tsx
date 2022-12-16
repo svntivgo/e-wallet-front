@@ -16,6 +16,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Account from './screens/Account';
 import Loading from './screens/Loading';
 import Login from './screens/Login';
+import CompleteInformation from './screens/CompleteInformation';
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -70,6 +71,20 @@ function MyStack() {
     </Stack.Navigator>
   );
 }
+
+function MyInformationStack() {
+  return (
+    <Stack.Navigator
+      screenOptions={{
+        header: () => {},
+      }}>
+      <Stack.Screen
+        name="Complete Information"
+        component={CompleteInformation}
+      />
+    </Stack.Navigator>
+  );
+}
 function MyDrawer() {
   const { isAuth } = useSelector((state: any) => state.auth);
 
@@ -87,6 +102,10 @@ function MyDrawer() {
       <Drawer.Screen name="Stack" component={MyStack} />
       <Drawer.Screen name="Tabs" component={MyTabs} />
       <Drawer.Screen name="Themes" component={Themes} />
+      <Drawer.Screen
+        name="CompleteInformation"
+        component={MyInformationStack}
+      />
       <Drawer.Screen name="ChangePassword" component={ChangePassword} />
     </Drawer.Navigator>
   );

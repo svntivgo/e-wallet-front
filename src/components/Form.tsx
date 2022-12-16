@@ -56,7 +56,7 @@ const Form = ({ inputs, movementApi, button, action }: Props) => {
   );
 
   const getAccountByClient = async (phoneEmail: string, input: any) => {
-    const apiClient = `/movement/phone-email/${phoneEmail}`;
+    const apiClient = `/account/phone-email/${phoneEmail}`;
     const requestOptions = {
       method: 'GET',
       headers: {
@@ -85,6 +85,7 @@ const Form = ({ inputs, movementApi, button, action }: Props) => {
       method: 'PATCH',
       headers: {
         'Content-type': 'application/json',
+        authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(request),
     };
@@ -113,7 +114,7 @@ const Form = ({ inputs, movementApi, button, action }: Props) => {
               <TextInput
                 onChangeText={(e: any) => textHandler(e, input.type, input)}
                 onEndEditing={(e: any) => {
-                  input.name === 'clientIncome' &&
+                  input.name === 'idIncome' &&
                     getAccountByClient(e.nativeEvent.text, input);
                 }}
                 style={styles.textInput}

@@ -69,11 +69,12 @@ const Form = ({ inputs, movementApi, button, action }: Props) => {
       .then(response => response.json())
       .then(response => {
         input.error = 'User not found';
+        setTyping(phoneEmail);
+        setRequest({ ...request });
         if (response.id) {
           input.error = '';
           setRequest({ ...request, idIncome: response.id });
         }
-        setTyping(phoneEmail);
       })
       .catch(error => {
         console.log(error);

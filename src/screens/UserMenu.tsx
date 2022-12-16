@@ -36,12 +36,12 @@ const UserMenu = ({ navigation }: DrawerContentComponentProps) => {
         </Text>
       </View>
       <View style={styles.containerMenu}>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => navigation.navigate('ChangePassword')}
           style={styles.item}>
           <Icon style={styles.icon} name="lock" size={25} />
           <Text style={styles.text}>Change password</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <TouchableOpacity
           onPress={() => navigation.navigate('Themes')}
           style={styles.item}>

@@ -7,20 +7,27 @@ import { accountBalanceHome } from '../themes/accountBalance';
 import { home as styles } from '../themes/home';
 import { currencyHook } from '../hooks/currencyHook';
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
-import { setSetting, setId, setAccount } from '../redux/userSlice';
+import {
+  setSetting,
+  setId,
+  setAccount,
+  setLastMovements,
+} from '../redux/userSlice';
 import { api } from '../common/api';
 
 const Home = ({ navigation }: BottomTabScreenProps<any>) => {
-  const { balance, lastMovements, userData, id, setting } = useSelector(
+  const { balance, account, userData, id, setting } = useSelector(
     (state: any) => state.user,
   );
   const { isAuth, token } = useSelector((state: any) => state.auth);
   const dispatch = useDispatch();
+  // console.log(userData.id);
 
   const initialData = React.useCallback(async () => {
     const apiClient = `/client/phone-email/${userData.email}`;
     const apiAccount = `/account/${id}`;
     const apiSetting = `/setting/${id}`;
+    const apiLastMovements = `/movement/${account}`;
     const requestOptions = {
       method: 'GET',
       headers: {
@@ -48,7 +55,13 @@ const Home = ({ navigation }: BottomTabScreenProps<any>) => {
         dispatch(setSetting(response));
       })
       .catch(error => console.log(error));
-  }, [dispatch, id, navigation, token, userData.email]);
+    await fetch(api.base + apiLastMovements, requestOptions)
+      .then(response => response.json())
+      .then(response => {
+        dispatch(setLastMovements(response));
+      })
+      .catch(error => console.log(error));
+  }, [account, dispatch, id, navigation, token, userData.email]);
 
   useEffect(() => {
     initialData();
@@ -70,7 +83,7 @@ const Home = ({ navigation }: BottomTabScreenProps<any>) => {
         />
       </View>
       <View style={styles.containerMovements}>
-        <UserMovements movements={lastMovements} />
+        <UserMovements />
       </View>
     </View>
   );

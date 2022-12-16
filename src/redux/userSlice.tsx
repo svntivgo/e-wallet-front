@@ -5,7 +5,7 @@ const userSlice = createSlice({
   initialState: {
     userData: {},
     id: '',
-    name: 'Bienvenido',
+    name: '',
     setting: {
       color: 'blue',
     },
@@ -103,6 +103,9 @@ const userSlice = createSlice({
     unsetUser(state) {
       state.userData = {};
     },
+    setName(state, action: PayloadAction<string>) {
+      state.name = action.payload;
+    },
     setId(state, action: PayloadAction<string>) {
       state.id = action.payload;
     },
@@ -128,6 +131,7 @@ const userSlice = createSlice({
 export const {
   setUser,
   unsetUser,
+  setName,
   setId,
   setAvailable,
   setAccount,

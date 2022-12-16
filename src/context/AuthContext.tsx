@@ -62,7 +62,12 @@ const AuthContextProvider = (props: any) => {
       .then(response => response.json())
       .then(response => {
         response.statusCode === 500 &&
-          register({ email: email, fullName: name, photo: photo, phone: '' });
+          register({
+            email: email,
+            fullName: name ? name : email,
+            photo: photo,
+            phone: '',
+          });
       })
       .catch(error => console.log(error));
   };

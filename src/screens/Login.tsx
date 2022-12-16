@@ -18,7 +18,7 @@ const Login = ({ navigation }: any) => {
 
   return (
     <View style={[styles.container, { backgroundColor: '#f5f5f5' }]}>
-      <Button onPress={() => login()} title="Login with Auth0" />
+      <Button onPress={() => login()} title="Login" />
     </View>
   );
 };

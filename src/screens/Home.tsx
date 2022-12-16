@@ -12,6 +12,7 @@ import {
   setId,
   setAccount,
   setLastMovements,
+  setName,
 } from '../redux/userSlice';
 import { api } from '../common/api';
 
@@ -40,7 +41,10 @@ const Home = ({ navigation }: BottomTabScreenProps<any>) => {
       .then(response => response.json())
       .then(response => {
         dispatch(setId(response.id));
-        response.phone === '' && navigation.navigate('CompleteInformation');
+        dispatch(setName(response.fullName));
+        if (response.phone === '' || response.fullName === '') {
+          navigation.navigate('CompleteInformation');
+        }
       })
       .catch(error => console.log(error));
     await fetch(api.base + apiAccount, requestOptions)

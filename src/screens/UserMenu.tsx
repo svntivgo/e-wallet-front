@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { AuthContext } from '../context/AuthContext';
 
 const UserMenu = ({ navigation }: DrawerContentComponentProps) => {
-  const { userData } = useSelector((state: any) => state.user);
+  const { userData, name } = useSelector((state: any) => state.user);
   const { isAuth } = useSelector((state: any) => state.auth);
   const { logout } = useContext(AuthContext);
 
@@ -31,9 +31,7 @@ const UserMenu = ({ navigation }: DrawerContentComponentProps) => {
           style={styles.photo}
           source={{ uri: userData?.picture || undefined }}
         />
-        <Text style={styles.name}>
-          {userData?.given_name || userData?.name}
-        </Text>
+        <Text style={styles.name}>{name || userData?.given_name}</Text>
       </View>
       <View style={styles.containerMenu}>
         {/* <TouchableOpacity

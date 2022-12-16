@@ -1,26 +1,14 @@
-import React, { useEffect, useRef } from 'react';
-import { View, Text } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, Text, Image } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import { currencyHook } from '../hooks/currencyHook';
 import { dateHook } from '../hooks/dateHook';
 import { userMovements as styles } from '../themes/userMovements';
 
-// interface Props {
-//   movements: [
-//     {
-//       reason: string;
-//       datetime: string;
-//       amount: number;
-//       user: {
-//         name: string;
-//       };
-//     },
-//   ];
-// }
-
 const UserMovements = () => {
   const { lastMovements } = useSelector((state: any) => state.user);
+
   useEffect(() => {}, [lastMovements]);
 
   return (
@@ -33,7 +21,7 @@ const UserMovements = () => {
               ...styles.movement,
               ...(i == 0 ? styles.movementFirst : null),
             }}>
-            <Text style={styles.foto}>Foto</Text>
+            <Image style={styles.foto} source={{ uri: movement.photo }} />
             <View style={styles.containerText}>
               <Text style={styles.reason}>{movement.reason}</Text>
               <Text style={styles.date}>{dateHook(movement.datetime)}</Text>

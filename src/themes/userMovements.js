@@ -13,9 +13,10 @@ export const userMovements = StyleSheet.create({
     paddingTop: 110,
   },
   foto: {
-    alignSelf: 'center',
-    flex: 1,
-    textAlign: 'center',
+    marginRight: 15,
+    borderRadius: 100,
+    height: 40,
+    width: 40,
   },
   containerText: {
     flex: 3,

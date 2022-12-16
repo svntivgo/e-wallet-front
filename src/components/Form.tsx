@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { View, TextInput, Text } from 'react-native';
+import { View, TextInput, Text, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSelector } from 'react-redux';
 import { api } from '../common/api';
+import { currencyHook } from '../hooks/currencyHook';
 import { form as styles } from '../themes/form';
 import ButtonBig from './ButtonBig';
 interface Props {
@@ -24,6 +25,7 @@ const Form = ({ inputs, movementApi, button, action }: Props) => {
   const [request, setRequest] = useState({
     idIncome: account,
     idOutcome: account,
+    amount: 0,
   });
   const [typing, setTyping] = useState('');
 
@@ -95,6 +97,12 @@ const Form = ({ inputs, movementApi, button, action }: Props) => {
       .then(response => response.json())
       .then(_response => {
         action.navigate('Stack');
+        Alert.alert(
+          'Transferencia exitosa',
+          `Se realizó la transferencia exitosamente a la cuenta ${
+            request.idIncome
+          } por el monto de $${currencyHook(request.amount)}`,
+        );
       })
       .catch(error => console.log(error));
   };
